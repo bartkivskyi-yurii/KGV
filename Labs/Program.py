@@ -3,6 +3,7 @@ from Bartkivskyi_Lab2_KGV import Lab2
 from Bartkivskyi_Lab3_KGV import Lab3
 from Bartkivskyi_Lab4_KGV import Lab4
 from Bartkivskyi_Lab5_KGV import Lab5
+from Bartkivskyi_Lab6_KGV import Lab6
 
 class Program:
     def __init__(self):
@@ -11,6 +12,7 @@ class Program:
         self.lab3 = Lab3()
         self.lab4 = Lab4()
         self.lab5 = Lab5()
+        self.lab6 = Lab6()
 
     def run_lab1(self):
         while True:
@@ -111,6 +113,31 @@ class Program:
             else:
                 print("Обирайте значення від 0 до 1")
 
+    def run_lab6(self):
+        while True:
+            print("\nЗавдання лаб6")
+            print("1 - Показати всі 9 початкових тестових зображень (f0-f8)")
+            print("2 - Вивести підсумкову таблицю похибок ε²_AO")
+            print("3 - Візуалізація фільтрації для обраного зображення (0-8)")
+            print("0 - Повернутися у головне меню")
+
+            choice = input("Оберіть дію (0-3): ").strip()
+
+            if choice == '1':
+                self.lab6.show_all_test_images()
+            elif choice == '2':
+                self.lab6.print_summary_table()
+            elif choice == '3':
+                num = input("Введіть номер зображення (0 - f0, 1 - f1, ..., 8 - f8): ").strip()
+                if num.isdigit() and 0 <= int(num) <= 8:
+                    self.lab6.show_filtration_results(int(num))
+                else:
+                    print("Уводьте число від 0 до 8")
+            elif choice == '0':
+                break
+            else:
+                print("Обирайте значення від 0 до 3")
+
     def run(self):
         while True:
             print("\n")
@@ -120,10 +147,11 @@ class Program:
             print("2 - Лабораторна робота №2")
             print("3 - Лабораторна робота №3")
             print("4 - Лабораторна робота №4")
-            print("4 - Лабораторна робота №5")
+            print("5 - Лабораторна робота №5")
+            print("6 - Лабораторна робота №6")
             print("0 - Вихід з програми")
 
-            choice = input("Оберіть пункт меню (0-5): ").strip()
+            choice = input("Оберіть пункт меню (0-6): ").strip()
 
             if choice == '1':
                 self.run_lab1()
@@ -135,11 +163,13 @@ class Program:
                 self.run_lab4()
             elif choice == '5':
                 self.run_lab5()
+            elif choice == '6':
+                self.run_lab6()
             elif choice == '0':
                 print("Завершення роботи програми.")
                 break
             else:
-                print("Обирайте значення від 0 до 4")
+                print("Обирайте значення від 0 до 6")
 
 
 if __name__ == "__main__":
